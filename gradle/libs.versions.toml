@@ -5,7 +5,7 @@ agp = "8.1.0"
 compose = "1.5.0"
 androidx-appcompat = "1.6.1"
 androidx-activityCompose = "1.7.2"
-compose-uitooling = "1.5.0"
+compose-uitooling = "1.5.2"
 libres = "1.1.8"
 voyager = "1.0.0-rc07"
 composeImageLoader = "1.4.1"
@@ -46,6 +46,8 @@ sqlDelight-driver-android = { module = "app.cash.sqldelight:android-driver", ver
 sqlDelight-driver-native = { module = "app.cash.sqldelight:native-driver", version.ref = "sqlDelight" }
 sqlDelight-driver-sqljs = { module = "app.cash.sqldelight:sqljs-driver", version.ref = "sqlDelight" }
 sqlDelight-extensions = { module = "app.cash.sqldelight:coroutines-extensions", version.ref = "sqlDelight" }
+androidx-ui-tooling-preview-android = { group = "androidx.compose.ui", name = "ui-tooling-preview-android", version = "1.5.2" }
+androidx-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview", version = "1.5.2" }
 
 [plugins]
 

@@ -5,7 +5,7 @@ import com.dranoer.gpt.kmm.data_cache.sqldelight.SharedDatabase
 import com.dranoer.gpt.kmm.domain.model.Character
 import com.dranoer.gpt.kmm.domain.model.Gender
 import com.dranoer.gpt.kmm.domain.model.Status
-import com.dranoer.gpt.kmm.repository.ICacheData
+import com.dranoer.gpt.kmm.domain.repository.ICacheData
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 

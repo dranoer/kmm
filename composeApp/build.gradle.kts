@@ -164,6 +164,9 @@ libres {
 tasks.getByPath("desktopProcessResources").dependsOn("libresGenerateResources")
 tasks.getByPath("desktopSourcesJar").dependsOn("libresGenerateResources")
 tasks.getByPath("jsProcessResources").dependsOn("libresGenerateResources")
+dependencies {
+    implementation(libs.androidx.ui.tooling.preview.android)
+}
 
 sqldelight {
     databases {

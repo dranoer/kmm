@@ -2,8 +2,8 @@ package com.dranoer.gpt.kmm
 
 import androidx.compose.runtime.Composable
 import cafe.adriel.voyager.navigator.Navigator
-import com.dranoer.gpt.kmm.presentation.ui.theme.AppTheme
-import com.dranoer.gpt.kmm.presentation.ui.features.characters.CharactersScreen
+import com.dranoer.gpt.kmm.presentation.base.ui.features.characters.CharactersScreen
+import com.dranoer.gpt.kmm.presentation.base.ui.theme.AppTheme
 
 @Composable
 internal fun App() = AppTheme {
