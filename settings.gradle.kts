@@ -1,4 +1,4 @@
-rootProject.name = "Rick-N-Morty-KMM"
+rootProject.name = "ComposeChat"
 include(":composeApp")
 
 pluginManagement {
