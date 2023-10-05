@@ -27,120 +27,127 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
+import cafe.adriel.voyager.core.screen.Screen
+import cafe.adriel.voyager.core.screen.ScreenKey
+import cafe.adriel.voyager.core.screen.uniqueScreenKey
 import com.dranoer.gpt.kmm.presentation.component.DateChip
 import com.dranoer.gpt.kmm.presentation.component.MessageList
 
 @OptIn(ExperimentalMaterial3Api::class)
-@Composable
-fun ChatScreen() {
-    var query by remember { mutableStateOf("Message") }
-    Scaffold(
-        containerColor = MaterialTheme.colorScheme.primary,
-        //region Toolbar
-        topBar = {
-            TopAppBar(
-                title = {
-                    Column(
-                        modifier = Modifier.fillMaxWidth(),
-                        horizontalAlignment = Alignment.CenterHorizontally
-                    ) {
-                        Text(
-                            text = "Chat GPT-4",
-                            color = MaterialTheme.colorScheme.onSurface,
-                            style = MaterialTheme.typography.bodyLarge,
-                        )
-                        Text(
-                            text = "Online",
-                            color = MaterialTheme.colorScheme.onSecondary,
-                            style = MaterialTheme.typography.bodyMedium,
-                        )
-                    }
-                },
-                colors = topAppBarColors(
-                    containerColor = MaterialTheme.colorScheme.secondary
-                ),
-            )
-        }, //endregion
-        //region Messages
-        content = { padding ->
-            Box(
-                contentAlignment = Alignment.Center,
-            ) {
+class ChatScreen : Screen {
+    override val key: ScreenKey = uniqueScreenKey
+
+    @Composable
+    override fun Content() {
+        var query by remember { mutableStateOf("Message") }
+        Scaffold(
+            containerColor = MaterialTheme.colorScheme.primary,
+            //region Toolbar
+            topBar = {
+                TopAppBar(
+                    title = {
+                        Column(
+                            modifier = Modifier.fillMaxWidth(),
+                            horizontalAlignment = Alignment.CenterHorizontally
+                        ) {
+                            Text(
+                                text = "Chat GPT-4",
+                                color = MaterialTheme.colorScheme.onSurface,
+                                style = MaterialTheme.typography.bodyLarge,
+                            )
+                            Text(
+                                text = "Online",
+                                color = MaterialTheme.colorScheme.onSecondary,
+                                style = MaterialTheme.typography.bodyMedium,
+                            )
+                        }
+                    },
+                    colors = topAppBarColors(
+                        containerColor = MaterialTheme.colorScheme.secondary
+                    ),
+                )
+            }, //endregion
+            //region Messages
+            content = { padding ->
+                Box(
+                    contentAlignment = Alignment.Center,
+                ) {
 //                Image(
 //                    painter = painterResource(id = R.drawable.purplebg),
 //                    contentDescription = null,
 //                    modifier = Modifier.fillMaxSize(),
 //                    contentScale = ContentScale.Crop
 //                )
-                //region Messages
-                Column(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(padding),
-                    horizontalAlignment = Alignment.CenterHorizontally,
-                ) {
-                    //region Date
-                    DateChip(modifier = Modifier)
-                    Spacer(modifier = Modifier.height(4.dp)) //endregion
                     //region Messages
-                    MessageList(
-                        messages = listOf(
-                            MessageUiModel(type = UserType.gpt, message = "Hi"),
-                            MessageUiModel(
-                                type = UserType.user,
-                                message = "Hey, Ive a question"
-                            ),
-                            MessageUiModel(type = UserType.gpt, message = "What is it?"),
-                            MessageUiModel(
-                                type = UserType.user,
-                                message = "I've a very very very very very long question"
-                            ),
-                            MessageUiModel(
-                                type = UserType.gpt,
-                                message = "I've a very very very very very very very very very very very very very very very very very long answer 😄",
-                            ),
-                        )
-                    ) //endregion
-                } //endregion
-            }
-        }, //endregion
-        //region Query input
-        bottomBar = {
-            //region Input
-            Box {
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(top = 6.dp)
-                        .background(MaterialTheme.colorScheme.onTertiary),
-                    horizontalArrangement = Arrangement.Center,
-                ) {
-                    TextField(
+                    Column(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .padding(
-                                start = 20.dp,
-                                top = 6.dp,
-                                end = 20.dp,
-                                bottom = 20.dp,
+                            .padding(padding),
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                    ) {
+                        //region Date
+                        DateChip(modifier = Modifier)
+                        Spacer(modifier = Modifier.height(4.dp)) //endregion
+                        //region Messages
+                        MessageList(
+                            messages = listOf(
+                                MessageUiModel(type = UserType.gpt, message = "Hi"),
+                                MessageUiModel(
+                                    type = UserType.user,
+                                    message = "Hey, Ive a question"
+                                ),
+                                MessageUiModel(type = UserType.gpt, message = "What is it?"),
+                                MessageUiModel(
+                                    type = UserType.user,
+                                    message = "I've a very very very very very long question"
+                                ),
+                                MessageUiModel(
+                                    type = UserType.gpt,
+                                    message = "I've a very very very very very very very very very very very very very very very very very long answer 😄",
+                                ),
                             )
-                            .background(MaterialTheme.colorScheme.onPrimary),
-                        value = query,
-                        onValueChange = { query = it },
-                        shape = RoundedCornerShape(18.dp),
-                        colors = TextFieldDefaults.colors(
-                            focusedContainerColor = MaterialTheme.colorScheme.onPrimary,
-                            unfocusedContainerColor = MaterialTheme.colorScheme.onPrimary,
+                        ) //endregion
+                    } //endregion
+                }
+            }, //endregion
+            //region Query input
+            bottomBar = {
+                //region Input
+                Box {
+                    Row(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(top = 6.dp)
+                            .background(MaterialTheme.colorScheme.onTertiary),
+                        horizontalArrangement = Arrangement.Center,
+                    ) {
+                        TextField(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(
+                                    start = 20.dp,
+                                    top = 6.dp,
+                                    end = 20.dp,
+                                    bottom = 20.dp,
+                                )
+                                .background(MaterialTheme.colorScheme.onPrimary),
+                            value = query,
+                            onValueChange = { query = it },
+                            shape = RoundedCornerShape(18.dp),
+                            colors = TextFieldDefaults.colors(
+                                focusedContainerColor = MaterialTheme.colorScheme.onPrimary,
+                                unfocusedContainerColor = MaterialTheme.colorScheme.onPrimary,
 //                                disabledContainerColor = MaterialTheme.colorScheme.onPrimary,
 //                                cursorColor = MaterialTheme.colorScheme.onPrimary,
-                        ),
-                        visualTransformation = VisualTransformation.None,
-                    )
-                }
-            } //endregion
-        },
-        //endregion
-    )
+                            ),
+                            visualTransformation = VisualTransformation.None,
+                        )
+                    }
+                } //endregion
+            },
+            //endregion
+        )
+    }
 }
 
 //region Preview
